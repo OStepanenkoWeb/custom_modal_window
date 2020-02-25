@@ -1,0 +1,75 @@
+.osmodal {}
+.osmodal.open .modal-overlay,
+.osmodal.open .modal-window {
+    opacity: 1;
+    z-index: 9999;
+}
+
+.modal-overlay, .modal-window {
+    opacity: 0;
+    z-index: -1;
+}
+.modal-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+}
+.modal-window {
+    width: 600px;
+    min-height: 50px;
+    border-radius: 5px;
+    background: #fff;
+
+}
+.modal-header {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.modal-footer{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #D9D9D9;
+}
+
+.modal-button {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.ok {
+    background-color: #4F9900;
+    color: white;
+}
+
+.close {
+    background-color:crimson;
+    color: white;
+}
+
+.modal-button:hover {
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0,0,0,0.5);
+}
