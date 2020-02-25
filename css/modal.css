@@ -1,8 +1,31 @@
 .osmodal {}
+
 .osmodal.open .modal-overlay,
 .osmodal.open .modal-window {
     opacity: 1;
     z-index: 9999;
+}
+
+.osmodal.hide .modal-overlay,
+.osmodal.hide .modal-window {
+    opacity: 1;
+    z-index: 9999;
+}
+
+.osmodal.hide .modal-window {
+    transform: translateY(-1000px);
+}
+
+.osmodal.hide .modal-overlay {
+    background: rgba(0, 0, 0, 0);
+}
+
+.osmodal.open .modal-window {
+     transform: translateY(0px);
+ }
+
+.osmodal.open .modal-overlay {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .modal-overlay, .modal-window {
@@ -18,15 +41,19 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, 0);
+    transition: background-color .5s ease-in;
 }
 .modal-window {
     width: 600px;
     min-height: 50px;
     border-radius: 5px;
     background: #fff;
-
+    margin: 0 auto;
+    transform: translateY(-1000px);
+    transition: transform .2s ease-in;
 }
+
 .modal-header {
     padding: 5px 10px;
     display: flex;

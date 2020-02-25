@@ -25,13 +25,21 @@ function _createModal(options) {
 
 $.modal = function (options) {
     const _create = _createModal(options)
+    const ANIMATION_SPEED = 200
+    let isClosing = false
 
     return {
         open(options) {
-            _create.classList.add('open')
+            !isClosing && _create.classList.add('open')
         },
         close() {
+            isClosing = true
             _create.classList.remove('open')
+            _create.classList.add('hide')
+            setTimeout(()=>{
+                _create.classList.remove('hide')
+                isClosing = false
+            }, ANIMATION_SPEED)
         },
         destroy() {
 
