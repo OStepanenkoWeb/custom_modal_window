@@ -8,10 +8,10 @@ const myModal = $.modal({
     width: '400px',
     footerButtons: [
         {
-            text: 'Ok',
-            type: 'primary',
+            text: 'ok',
+            type: 'close',
             handler () {
-                console.log('btn click')
+                myModal.close()
             }
         }
     ]

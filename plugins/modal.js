@@ -1,3 +1,9 @@
+Element.prototype.appendAfter = function (element) {
+    element.parentNode.insertBefore(this, element.nextSibling)
+}
+
+function noop() {}
+
 function _createModalFooter(buttons = []) {
     if(!buttons.length) {
         return document.createElement('div')
@@ -5,6 +11,16 @@ function _createModalFooter(buttons = []) {
 
     const wrap = document.createElement('div')
     wrap.classList.add('modal-footer')
+
+    buttons.forEach(button => {
+        const $button = document.createElement('button')
+        $button.textContent = button.text
+        $button.classList.add('modal-button')
+        $button.classList.add(`${button.type || 'ok' }`)
+        $button.onclick = button.handler || noop
+
+        wrap.appendChild($button)
+    })
 
     return wrap
 }
@@ -35,6 +51,7 @@ function _createModal({
             </div>
         </div>`)
     const footer = _createModalFooter(footerButtons)
+    footer.appendAfter(modal.querySelector('[data-content]'))
 
     document.body.appendChild(modal)
 
@@ -46,6 +63,8 @@ $.modal = function (options) {
     const _create = _createModal(options)
     const ANIMATION_SPEED = 200
     let isDestroyed = false
+    let isClosing = false
+
     const modal = {
         open(options) {
             if(isDestroyed) return
@@ -67,7 +86,7 @@ $.modal = function (options) {
         }
     }
 
-    let isClosing = false
+
 
     _create.addEventListener('click', listener)
 
