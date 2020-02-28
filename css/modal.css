@@ -1,3 +1,16 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 .osmodal {}
 
 .osmodal.open .modal-overlay,

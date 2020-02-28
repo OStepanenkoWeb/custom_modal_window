@@ -13,7 +13,7 @@ function _createModalFooter(buttons = []) {
     wrap.classList.add('modal-footer')
 
     buttons.forEach(button => {
-        const $button = document.createElement('button')
+        const $button = document.createElement('a')
         $button.textContent = button.text
         $button.classList.add('modal-button')
         $button.classList.add(`${button.type || 'ok' }`)
@@ -43,10 +43,6 @@ function _createModal({
                 </div>
                 <div class="modal-body" data-content>
                     ${ content }
-                </div>
-                <div class="modal-footer">
-                    <div class="modal-button ok">Ок</div>
-                    <div class="modal-button close">Close</div>
                 </div>
             </div>
         </div>`)
@@ -85,10 +81,16 @@ $.modal = function (options) {
             modal.close()
         }
     }
+    const openWindow = event => {
+        if (event.target.dataset.btn) {
+            modal.open()
+        }
+    }
 
 
 
     _create.addEventListener('click', listener)
+    document.addEventListener('click', openWindow)
 
     return Object.assign(modal, {
         destroy () {

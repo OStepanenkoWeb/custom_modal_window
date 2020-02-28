@@ -8,8 +8,14 @@ const myModal = $.modal({
     width: '400px',
     footerButtons: [
         {
-            text: 'ok',
+            text: 'Ok',
             type: 'close',
+            handler () {
+                myModal.close()
+            }
+        },
+        {
+            text: 'Close',
             handler () {
                 myModal.close()
             }
